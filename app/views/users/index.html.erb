@@ -1,1 +1,11 @@
-<h1>User index</h1>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'books/user_info', book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Users</h2>
+      <% @users.each do |user| %>
+        <%= link_to user.name, user_path(user.id) %>
+      <% end %>
+    </div>

@@ -1,4 +1,5 @@
 <h2>User info</h2>
+      <%= image_tag @user.getprofile_image(100,100) 
       <table>
         <tr></tr>
         <tr>
@@ -9,6 +10,7 @@
           <th>introduction</th>
         </tr>
       </table>
+      <%= link_to "user edit", edit_user_path(current_user.id) %>
       <h2>New book</h2>
       <%= form_with model: book do |f|%>
         <div class="field">
