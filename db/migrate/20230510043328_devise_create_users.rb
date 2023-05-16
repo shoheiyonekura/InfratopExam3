@@ -16,7 +16,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       
       ## 名前を保存するカラム
       t.string :name
-
+      
+      ## 自己紹介保存カラム
+      t.text :body
+      
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at

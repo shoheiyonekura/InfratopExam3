@@ -5,21 +5,30 @@
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
-      <table>
+      <table class="table">
         <tbody>
             <tr>
               <tb>
-                <%= @book1.user_id %>
+                <%= link_to user_path(@book_show.user.id) do %>
+                  <%= image_tag @book_show.user.get_profile_image(100,100) %>
+                <% end %>
+                <br>
+                <%= link_to @book_show.user.name, user_path(@book_show.user.id)%>
               </tb>
               <tb>
-                <%= @book1.title %>
+                <%= link_to @book_show.title, book_path(@book_show.id) %>
               </tb>
               <tb>
-                <%= @book1.body %>
+                <%= @book_show.body %>
               </tb>
-              <tb>
-                <%= link_to "edit", edit_book_path %>
-              </tb>
+              <% if @book_show.user == current_user %>
+                <tb>
+                  <%= link_to "edit", edit_book_path , class: 'btn btn-success'%>
+                </tb>
+                <tb>
+                  <%= link_to "destroy", book_path(@book_show.id), method: :delete, "data-confirm" => "本当に削除しますか？" , class:'btn btn-danger'%>
+                </tb>
+              <% end %>
             </tr>
         </tbody>
       </table>
