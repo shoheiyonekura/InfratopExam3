@@ -1,33 +1,33 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <%= render 'user_info', book: @book %>
+      <%= render 'user_info', book: @book , user: @book_show.user %>
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
         <tbody>
             <tr>
-              <tb>
+              <td>
                 <%= link_to user_path(@book_show.user.id) do %>
                   <%= image_tag @book_show.user.get_profile_image(100,100) %>
                 <% end %>
                 <br>
                 <%= link_to @book_show.user.name, user_path(@book_show.user.id)%>
-              </tb>
-              <tb>
+              </td>
+              <td>
                 <%= link_to @book_show.title, book_path(@book_show.id) %>
-              </tb>
-              <tb>
+              </td>
+              <td>
                 <%= @book_show.body %>
-              </tb>
-              <% if @book_show.user == current_user %>
-                <tb>
-                  <%= link_to "edit", edit_book_path , class: 'btn btn-success'%>
-                </tb>
-                <tb>
-                  <%= link_to "destroy", book_path(@book_show.id), method: :delete, "data-confirm" => "本当に削除しますか？" , class:'btn btn-danger'%>
-                </tb>
+              </td>
+              <% if @book_show.user.id == current_user.id %>
+              <td>
+                <%= link_to "Edit", edit_book_path , class: 'btn btn-success'%>
+              </td>
+              <td>
+                <%= link_to "Destroy", book_path(@book_show.id), method: :delete, "data-confirm" => "本当に削除しますか？" , class:'btn btn-danger'%>
+              </td>
               <% end %>
             </tr>
         </tbody>

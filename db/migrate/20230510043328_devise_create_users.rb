@@ -18,7 +18,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :name
       
       ## 自己紹介保存カラム
-      t.text :body
+      t.text :introduction
       
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
